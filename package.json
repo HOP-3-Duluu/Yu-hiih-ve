@@ -16,7 +16,8 @@
     "@mui/styled-engine-sc": "^5.12.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "react-native-svg": "^13.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
