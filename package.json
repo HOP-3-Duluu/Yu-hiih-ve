@@ -10,9 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.12.0",
+    "@mui/styled-engine-sc": "^5.12.0",
     "react": "18.2.0",
     "react-native": "0.71.6",
-    "react-native-svg": "^13.9.0"
+    "react-native-svg": "^13.9.0",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
