@@ -13,10 +13,10 @@ import {
 import {
   Colors,
   DebugInstructions,
-  Header,
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { Header } from '../components/common/header';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -30,8 +30,8 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Text>Hello, Yu hiimeer baina?</Text>
+    <SafeAreaView>
+      <Header/>
     </SafeAreaView>
   );
 }
