@@ -1,14 +1,9 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
-import { Categories } from '../components/common/categories_section';
-import { Header } from '../components/common/header';
+import { StackNavigator } from '../navigations/StackNavigator';
 
 const App = () => { 
   return (
-    <SafeAreaView>
-      <Header/>
-      <Categories/>
-    </SafeAreaView>
+    <StackNavigator/>
   );
 }
 
