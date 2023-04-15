@@ -1,10 +1,10 @@
 import React from 'react';
 import { StackNavigator } from '../navigations/StackNavigator';
 
-const App = () => { 
+const App = () => {
   return (
     <StackNavigator/>
   );
-}
+};
 
 export default App;

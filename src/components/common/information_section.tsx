@@ -3,8 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
-  Image,
   FlatList,
 } from 'react-native';
 import CardIcon from '../../assets/icon/card';
