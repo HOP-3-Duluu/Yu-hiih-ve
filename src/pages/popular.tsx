@@ -1,7 +1,7 @@
 import React from "react";
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView } from "react-native";
 
-export const SettingsPage = () => {
+export const PopularPage = () => {
     return (
         <SafeAreaView>
 
