@@ -17,6 +17,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import { Header } from '../components/common/header';
+import { SearchInput } from '../components/core/searchinput';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -32,6 +33,7 @@ function App(): JSX.Element {
   return (
     <SafeAreaView>
       <Header/>
+      <SearchInput/>
     </SafeAreaView>
   );
 }
