@@ -1,5 +1,5 @@
 import { SafeAreaView, Text, View, StyleSheet, Image, Pressable } from "react-native"
-import MapIcon from "../../assets/icon/map";
+import { MapIcon } from "../../assets/icon"
 
 
 
@@ -13,7 +13,7 @@ export const Header = ({ navigation }: any) => {
             </Text>
             <View style={styles.icon}>
                 <Pressable onPress={() => {
-                    navigation.navigate('')
+                    // navigation.navigate('')
                 }}>
                     <MapIcon />
                 </Pressable>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Rect, Path } from "react-native-svg"
 
-function CardIcon({props}) {
+export const CardIcon = ({props}: any) => {
   return (
     <Svg
     width={props.width}
@@ -26,5 +26,3 @@ function CardIcon({props}) {
     </Svg>
   );
 }
-
-export default CardIcon;

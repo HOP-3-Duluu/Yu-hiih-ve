@@ -9,15 +9,6 @@ import {
   FlatList,
 } from 'react-native';
 
-// props = {
-//  image_url: "",
-//  text: ""
-//  background: "", 
-//  width: ,
-//  height: ,
-//  color: ""
-// }
-//
 
 export const SmallCategory = ({props}: {props: any}) => {
   const styled = StyleSheet.create({
