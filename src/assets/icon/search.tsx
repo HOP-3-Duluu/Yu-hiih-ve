@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
-export const SearchIcon = (props) =>  {
+export const SearchIcon = ({props}: any) =>  {
   return (
     <Svg
       width={20}

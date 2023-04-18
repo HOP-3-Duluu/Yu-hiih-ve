@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Rect, Path } from "react-native-svg"
 
-function FoodIcon({props}) {
+export const  FoodIcon = ({props}: any) => {
   return (
     <Svg
       width={props.width}
@@ -26,5 +26,3 @@ function FoodIcon({props}) {
     </Svg>
   )
 }
-
-export default FoodIcon

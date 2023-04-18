@@ -5,10 +5,7 @@ import {
   View,
   FlatList,
 } from 'react-native';
-import CardIcon from '../../assets/icon/card';
-import CarIcon from '../../assets/icon/car';
-import FoodIcon from '../../assets/icon/food';
-import ShieldIcon from '../../assets/icon/shield';
+import { CarIcon, CardIcon, FoodIcon, ShieldIcon } from '../../assets/icon';
 export const Information = () => {
   const mock_data = [
     {
