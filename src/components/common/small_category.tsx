@@ -1,17 +1,23 @@
-import {useState} from 'react';
-import {StyleSheet, Text, Image, Pressable} from 'react-native';
+import LottieView from 'lottie-react-native';
+import { StyleSheet, Text, Image, Pressable } from 'react-native';
 
 
-export const SmallCategory = ({category_type}: any) => {
-  
+export const SmallCategory = ({ category_type }: any) => {
+
+
   return (
     <Pressable
-      // onPress={() => {
-      // }}
       style={styled.body}>
-      <Image style={styled.image} source={category_type.url} />
+      <LottieView
+        autoPlay
+        loop
+        source={category_type.url}
+        style={{ height: 60, width: 60 }}
+      />
+      {/* <Image source={category_type.url}
+        style={{ height: 50, width: 50 }}
+      /> */}
       <Text style={styled.text}>{category_type.name}</Text>
-      
     </Pressable>
   );
 };
