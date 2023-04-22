@@ -30,7 +30,6 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
       <Tab.Screen
         name="Home"
         component={HomePage}
-        //   navigation={navigation}
         options={{
           headerShown: false,
           tabBarShowLabel: false,
@@ -41,7 +40,6 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
       <Tab.Screen
         name="popular"
         component={PopularPage}
-        //   navigation={navigation}
         options={{
           headerShown: false,
           tabBarShowLabel: false,
@@ -52,7 +50,6 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
       <Tab.Screen
         name="settings"
         component={SettingsPage}
-        //   navigation={navigation}
         options={{
           headerShown: false,
           tabBarShowLabel: false,
