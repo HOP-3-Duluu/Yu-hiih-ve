@@ -59,7 +59,8 @@ export const Popular_section = () => {
 
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.body}>
+      <Text style={styles.title}>Popular</Text>
       <FlatList
         data={data}
         renderItem={({ item }) => <OneZurag item={item} />}
@@ -70,6 +71,16 @@ export const Popular_section = () => {
 }
 
 const styles = StyleSheet.create({
+  body: {
+    marginLeft: 25,
+    marginTop: 30
+  },
+  title: {
+    marginBottom: 20,
+    color: '#242424',
+    fontWeight: '500',
+    fontSize: 20,
+  },
   zuragcontainer: {
     width: 230,
     height: 290,
@@ -79,8 +90,7 @@ const styles = StyleSheet.create({
     borderColor: "rgb(0, 0, 0, 0.04)"
   },
   item: {
-    paddingLeft: 15,
-
+    marginRight: 15,
   },
   zurag: {
     width: 230,
@@ -106,6 +116,5 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-
   },
 })
