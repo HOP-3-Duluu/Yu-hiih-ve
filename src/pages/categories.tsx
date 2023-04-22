@@ -13,12 +13,12 @@ import {SmallCategory} from '../components/common/small_category';
 
 export const CategoriesPage = ({navigation}: any) => {
   const types = [
-    {name: 'Internet Cafe', url: require('../assets/image/computer.png')},
-    {name: 'Restaurant', url: require('../assets/image/ramenNoodles.png')},
-    {name: 'National Park', url: require('../assets/image/forest.png')},
-    {name: 'Movie Theater', url: require('../assets/image/cinema.png')},
-    {name: 'Game Center', url: require('../assets/image/game.png')},
-    {name: 'Gallery', url: require('../assets/image/gallery.png')},
+    {name: 'Internet Cafe', url: require('../assets/animation/computer.json')},
+    {name: 'Restaurant', url: require('../assets/animation/restaurant.json')},
+    {name: 'National Park', url: require('../assets/animation/park.json')},
+    {name: 'Movie Theater', url: require('../assets/animation/movie.json')},
+    {name: 'Game Center', url: require('../assets/animation/game.json')},
+    {name: 'Gallery', url: require('../assets/animation/gallery.json')},
     {name: 'Lounge', url: require('../assets/image/lounge.png')},
     {name: 'Club', url: require('../assets/image/club.png')},
     {name: 'Pub', url: require('../assets/image/pub.png')},
