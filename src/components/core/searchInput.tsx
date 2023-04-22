@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         width: 340,
         display: "flex",
         flexDirection: 'row',
-        borderRadius: 15
+        borderRadius: 15,
+        marginTop: 10
     },
     body: {
         width: 340,
