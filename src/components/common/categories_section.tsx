@@ -3,11 +3,10 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   Image,
   FlatList,
 } from 'react-native';
-export const Categories = () => {
+export const Categories = ({navigation}: any) => {
   const mock_data = [
     {
       image_url: require('../../assets/image/nature.png'),
@@ -47,7 +46,9 @@ export const Categories = () => {
           }}>
           Category
         </Text>
-       <Pressable>
+       <Pressable onPress={() => {
+        navigation.navigate('categories')
+       }}>
        <Text
           style={{
             fontWeight: '400',
