@@ -8,7 +8,7 @@ import { SearchInput } from '../components/core/searchInput';
 export const HomePage = ({navigation}: any) => { 
   return (
     <SafeAreaView>
-      <Header/>
+      <Header navigation={navigation}/>
       <SearchInput/>
       <Categories navigation={navigation}/>
       <Popular_section/>
