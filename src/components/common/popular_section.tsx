@@ -72,7 +72,6 @@ export const Popular_section = () => {
 
 const styles = StyleSheet.create({
   body: {
-    marginLeft: 25,
     marginTop: 30
   },
   title: {

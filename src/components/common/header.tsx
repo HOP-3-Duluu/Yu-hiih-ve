@@ -25,18 +25,17 @@ export const Header = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         height: 90,
-        width: '100%',
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginLeft: "2%"
     },
     text: {
         fontSize: 30,
         fontWeight: '700',
     },
     icon: {
-        width: 150,
+        width: 170,
         height: 25,
         display: "flex",
         flexDirection: 'column',
