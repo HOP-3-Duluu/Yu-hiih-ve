@@ -13,7 +13,7 @@ export const Header = ({ navigation }: any) => {
             </Text>
             <View style={styles.icon}>
                 <Pressable onPress={() => {
-                    // navigation.navigate('')
+                    navigation.navigate('detail')
                 }}>
                     <MapIcon />
                 </Pressable>
