@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, SafeAreaView, StyleSheet, TextInput, View } from 'react-native';
 import { SearchIcon } from '../../assets/icon';
-import { cyan } from '@mui/material/colors';
 
 export const SearchInput = ({ navigation }: any) => {
 

@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
-function MapIcon(props) {
+export const MapIcon = ({props}: any) => {
   return (
     <Svg
       width={25}
@@ -18,5 +18,3 @@ function MapIcon(props) {
     </Svg>
   )
 }
-
-export default MapIcon

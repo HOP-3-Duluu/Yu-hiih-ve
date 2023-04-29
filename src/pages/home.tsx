@@ -2,13 +2,16 @@ import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import { Categories } from '../components/common/categories_section';
 import { Header } from '../components/common/header';
+import { Popular_section } from '../components/common/popular_section';
 import { SearchInput } from '../components/core/searchInput';
 
-export const HomePage = () => { 
+export const HomePage = ({navigation}: any) => { 
   return (
     <SafeAreaView>
-      <Header/>
-      <Categories/>
+      <Header navigation={navigation}/>
+      <SearchInput/>
+      <Categories navigation={navigation}/>
+      <Popular_section/>
     </SafeAreaView>
   );
 }

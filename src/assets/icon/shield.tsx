@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Rect, Path } from "react-native-svg"
 
-function ShieldIcon({props}) {
+export const ShieldIcon = ({props}: any) => {
   return (
     <Svg
     width={props.width}
@@ -25,5 +25,3 @@ function ShieldIcon({props}) {
     </Svg>
   );
 }
-
-export default ShieldIcon;

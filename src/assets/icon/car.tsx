@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Rect, Path } from "react-native-svg"
 
-function CarIcon({props}) {
+export const CarIcon = ({props}: any) => {
   return (
     <Svg
     width={props.width}
@@ -26,5 +26,3 @@ function CarIcon({props}) {
     </Svg>
   )
 }
-
-export default CarIcon

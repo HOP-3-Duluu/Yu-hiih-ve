@@ -1,60 +1,46 @@
-import {border, borderRadius} from '@mui/system';
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Image,
-  FlatList,
-} from 'react-native';
+import {useState} from 'react';
+import {StyleSheet, Text, Image, Pressable} from 'react-native';
 
-// props = {
-//  image_url: "",
-//  text: ""
-//  background: "", 
-//  width: ,
-//  height: ,
-//  color: ""
-// }
-//
 
-export const SmallCategory = ({props}: {props: any}) => {
-  const styled = StyleSheet.create({
-    body: {
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'flex-start',
-      backgroundColor: props.background
-        ? props.background
-        : 'rgba(188, 154, 255, 0.183)',
-      width: props.width ? props.width : 160,
-      height: props.height ? props.height : 120,
-      padding: 15,
-      gap: 10,
-      borderRadius: 15,
-    },
-    image: {
-      width: 50,
-      height: 50,
-    },
-
-    text: {
-      fontWeight: '600',
-      fontSize: 24,
-      color: props.color ? props.color : 'white',
-    },
-  });
-
+export const SmallCategory = ({category_type}: any) => {
+  
   return (
-    <View style={styled.body}>
-      <Image
-        style={styled.image}
-        source={{
-          uri: `${props.image_url}`,
-        }}
-      />
-      <Text style={styled.text}>{props.text}</Text>
-    </View>
+    <Pressable
+      // onPress={() => {
+      // }}
+      style={styled.body}>
+      <Image style={styled.image} source={category_type.url} />
+      <Text style={styled.text}>{category_type.name}</Text>
+      
+    </Pressable>
   );
 };
+
+const styled = StyleSheet.create({
+  body: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(0, 0, 0, 0.04)',
+    width: 160,
+    height: 120,
+    padding: 15,
+    gap: 10,
+    borderRadius: 15,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 0, 0, 0.10)',
+    marginBottom: 20,
+    marginLeft: 12,
+    marginRight: 12
+  },
+  image: {
+    width: 50,
+    height: 50,
+  },
+
+  text: {
+    fontWeight: '600',
+    fontSize: 20,
+    color: '#242424',
+  },
+});

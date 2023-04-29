@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
-export const Settings_icon = (props) => {
+export const Settings_icon = ({props}: any) => {
   return (
     <Svg
       width={22}
