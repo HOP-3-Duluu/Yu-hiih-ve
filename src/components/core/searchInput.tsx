@@ -10,12 +10,15 @@ export const SearchInput = ({ navigation }: any) => {
             <View style={styles.body}>
                 <View>
                     <TextInput
+                        style={styles.input}
                         placeholder='Enter category'
                     />
                 </View>
-                <Pressable onPress={() => {
+                <Pressable
+                    style={styles.button}
+                    onPress={() => {
 
-                }}>
+                    }}>
                     <SearchIcon />
                 </Pressable>
             </View>
@@ -38,9 +41,20 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 15,
+        paddingRight: 15,
         borderColor: 'grey',
         borderWidth: 0.3,
         borderRadius: 15,
+    }, 
+    input: {
+        width: 290,
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 15
+    },
+    button: {
+        width: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 });

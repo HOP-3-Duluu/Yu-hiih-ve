@@ -1,7 +1,6 @@
 import { View, FlatList, Text, SafeAreaView, Image, StyleSheet, Button, Touchable, TouchableOpacity, Pressable, ImageBackground } from "react-native"
 import { useState } from "react";
-import { Fullheart } from "../../assets/icon/zurh";
-import { Heart_icon } from "../../assets/icon";
+import { Fullheart, Heart_icon } from "../../assets";
 
 
 export const Popular_section = () => {

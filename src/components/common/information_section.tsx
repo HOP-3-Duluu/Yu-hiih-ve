@@ -6,8 +6,10 @@ import {
   FlatList,
 } from 'react-native';
 import { CarIcon, CardIcon, FoodIcon, ShieldIcon } from '../../assets/icon';
-export const Information = () => {
-  const mock_data = [
+export const Information = ({props}: any) => {
+      // MOCK DATA!
+    // DELETE WHEN WE GET REAL DATA!
+   props = [
     {
       type: 'price',
       name: '1kino 10000T',
@@ -30,7 +32,7 @@ export const Information = () => {
     },
   ];
 
-  let props = {
+  let Sizeprops = {
     with: 60,
     height: 60,
   };
@@ -38,27 +40,27 @@ export const Information = () => {
   return (
     <View style={styled.body}>
       <FlatList
-        data={mock_data}
+        data={props}
         horizontal={true}
         renderItem={({item}) => (
           <View style={styled.container}>
             <Pressable style={styled.button}>
               {item.type == 'price' ? (
-                <CardIcon props={props} />
+                <CardIcon props={Sizeprops} />
               ) : item.type == 'distance' ? (
-                <CarIcon props={props} />
+                <CarIcon props={Sizeprops} />
               ) : item.type == 'food' ? (
-                <FoodIcon props={props} />
+                <FoodIcon props={Sizeprops} />
               ) : (
-                <ShieldIcon props={props} />
+                <ShieldIcon props={Sizeprops} />
               )}
               <Text
                 style={{
-                  fontSize: 12,
+                  fontSize: 10,
                   fontWeight: '500',
                   color: '#22222299',
-                  width: 100,
-                  textAlign: "center"
+                  width: 82,
+                  textAlign: 'center',
                 }}>
                 {item.name}
               </Text>
@@ -76,21 +78,25 @@ const styled = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginLeft: 20,
+    marginRight: 10,
+    height: 115,
+    marginTop: 5
   },
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    height: 115,
   },
   button: {
-    height: 115,
-    width: 100,
+    height: 100,
+    width: 80,
     borderRadius: 20,
     backgroundColor: '#F8F8F8',
     justifyContent: 'center',
     // alignItems: 'center',
     gap: 8,
     flexDirection: 'column',
-    marginRight: 15,
+    marginRight: 7,
   },
 });
