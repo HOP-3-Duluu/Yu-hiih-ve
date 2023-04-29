@@ -83,7 +83,6 @@ const styled = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    marginLeft: 25,
     marginTop: 30,
   },
   container: {

@@ -28,16 +28,16 @@ export const SearchInput = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: 25,
         backgroundColor: '#f8f8f8',
-        width: 340,
+        width: "92%",
         display: "flex",
         flexDirection: 'row',
         borderRadius: 15,
-        overflow: 'hidden'
+        marginTop: 10,
+        marginLeft: '2%'
     },
     body: {
-        width: 340,
+        width: "100%",
         display: "flex",
         flexDirection: 'row',
         justifyContent: 'space-between',
