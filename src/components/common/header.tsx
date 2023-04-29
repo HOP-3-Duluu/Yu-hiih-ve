@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     icon: {
-        width: 170,
+        width: "40%",
         height: 25,
         display: "flex",
         flexDirection: 'column',
