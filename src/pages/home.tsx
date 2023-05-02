@@ -12,7 +12,7 @@ export const HomePage = ({ navigation }: any) => {
   return (
     <SafeAreaView style={{ alignItems: 'flex-end', width: windowWidth }}>
       <ScrollView style={{ height: windowHeight - 140, width: "94%" }}>
-        <Header />
+        <Header navigation={navigation} />
         <SearchInput />
         <Categories navigation={navigation} />
         <Popular_section />
