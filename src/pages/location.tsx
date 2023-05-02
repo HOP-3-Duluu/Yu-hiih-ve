@@ -1,3 +1,4 @@
+import {height} from '@mui/system';
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -10,7 +11,6 @@ import {
   Pressable,
   Button,
 } from 'react-native';
-import {Image} from 'react-native-svg';
 import {LeftArrow} from '../assets/icon/left_arrow';
 import {Information} from '../components/common/information_section';
 import {LocationImage} from '../components/common/location_image';
@@ -33,12 +33,9 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
   const styled = StyleSheet.create({
     body: {
       display: 'flex',
-      justifyContent: 'center',
       alignItems: 'center',
-      gap: 3,
-      maxHeight: windowHeight > 700 ? windowHeight : 700
+      justifyContent: 'space-between',
     },
-    
     header: {
       width: windowWidth - 60,
       fontSize: 30,
@@ -48,11 +45,11 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
     text: {
       color: 'rgba(0,0,0,0.7)',
       width: windowWidth - 60,
-      fontSize: 13,
+      fontSize: windowHeight > 700 ? 15.5 : 13,
       fontWeight: '300',
       paddingRight: 50,
       lineHeight: 15,
-      height: readMore ? 300 : 50,
+      height: readMore ? 600 : Math.round(windowHeight / 15 / 15) * 15,
     },
     dots: {
       position: 'absolute',
@@ -71,26 +68,28 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       transform: readMore ? [{translateY: 5}] : [{rotateX: '180deg'}],
     },
     scroll: {
-      height: 60,
+      height: Math.round(windowHeight / 15 / 15) * 15 + 15,
     },
     mapButton: {
       width: windowWidth - 50,
       backgroundColor: '#FF678B',
       height: 70,
-      borderRadius: 80,
+      marginTop: 10,
+      borderRadius: 60,
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      position: 'absolute',
-      bottom: 10,
+      position: windowHeight > 700 ? 'absolute' : 'relative',
+      bottom: 0,
+      marginBottom: -20,
     },
     backButton: {
       width: 60,
       height: 60,
       backgroundColor: 'white',
-      position: 'absolute',
-      top: 25,
-      left: 38,
+      left: '-31%',
+      marginTop: -60,
+      top: windowHeight > 700 ? '-43%' : '-38%',
       zIndex: 10,
       borderRadius: 20,
       display: 'flex',
@@ -99,60 +98,60 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       transform: [{scale: 0.5}],
     },
   });
-  console.log(windowHeight);
   return (
-    <ScrollView>
-      <SafeAreaView style={styled.body}>
-        <Pressable
-          onPress={() => {
-            navigation.goBack();
-          }}
-          style={styled.backButton}>
-          <LeftArrow />
-        </Pressable>
-        <LocationImage
-          props={{
-            image_url:
-              'https://cdn.shopify.com/s/files/1/0226/8187/8608/products/14005011_0_1280x1280_bebc5ed4-835b-45a9-b660-e18c59ce10c6.jpg?v=1605512532',
-          }}
-        />
-        <Text style={styled.header}>{props.name}</Text>
-        <View>
-          {readMore ? (
-            <View style={styled.scroll}>
-              <ScrollView>
-                <Text style={styled.text}>{props.description}</Text>
-              </ScrollView>
-            </View>
-          ) : (
-            <Text style={styled.text}>{props.description}</Text>
-          )}
+    <SafeAreaView style={{height: '100%'}}>
+      <ScrollView>
+        <View style={windowHeight < 700 ? [styled.body] : [styled.body, {height: windowHeight - 120}]}>
+          <LocationImage
+            props={{
+              image_url:
+                'https://cdn.shopify.com/s/files/1/0226/8187/8608/products/14005011_0_1280x1280_bebc5ed4-835b-45a9-b660-e18c59ce10c6.jpg?v=1605512532',
+            }}
+          />
+          <Pressable
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={styled.backButton}>
+            <LeftArrow />
+          </Pressable>
+          <Text style={styled.header}>{props.name}</Text>
+          <View>
+            {readMore ? (
+              <View style={styled.scroll}>
+                <ScrollView>
+                  <Text style={styled.text}>{props.description}</Text>
+                </ScrollView>
+              </View>
+            ) : (
+              <Text style={styled.text}>{props.description}</Text>
+            )}
 
-          <Text style={styled.dots}>...</Text>
+            <Text style={styled.dots}>...</Text>
+          </View>
+          <TouchableOpacity
+            activeOpacity={1}
+            onPress={e => setReadMore(!readMore)}>
+            <Text style={styled.read}>
+              {readMore ? 'Read Less' : 'Read More'}
+              <View style={styled.rotate}>
+                <Text style={{fontWeight: '600', color: '#FF678B'}}> ^</Text>
+              </View>
+            </Text>
+          </TouchableOpacity>
+          <Information props={[]} />
+          {windowHeight > 700 ? <View style={{height: 70}} /> : ''}
+          <Pressable
+            style={styled.mapButton}
+            onPress={() => {
+              navigation.navigate('Home'); // <----------- ADD NAVIGATION HERE!!1!1
+            }}>
+            <Text style={{fontWeight: '600', fontSize: 18, color: 'white'}}>
+              Go to map →
+            </Text>
+          </Pressable>
         </View>
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={e => setReadMore(!readMore)}>
-          {/* <Text style={styled.read}> */}
-          <Text style={styled.read}>
-            {readMore ? 'Read Less' : 'Read More'}
-            <View style={styled.rotate}>
-              <Text style={{fontWeight: '600', color: '#FF678B'}}> ^</Text>
-            </View>
-          </Text>
-        </TouchableOpacity>
-        <Information props={[]} />
-        <View style={{marginTop: 90}} />
-        <Pressable
-          style={styled.mapButton}
-          onPress={() => {
-            navigation.navigate('Home'); // <----------- ADD NAVIGATION HERE!!1!1
-          }}>
-          <Text style={{fontWeight: '600', fontSize: 18, color: 'white'}}>
-            Go to map →
-          </Text>
-        </Pressable>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
