@@ -1,4 +1,3 @@
-import {height} from '@mui/system';
 import React, {useState} from 'react';
 import {
   SafeAreaView,
@@ -9,9 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
   Pressable,
-  Button,
 } from 'react-native';
-import {LeftArrow} from '../assets/icon/left_arrow';
 import {Information} from '../components/common/information_section';
 import {LocationImage} from '../components/common/location_image';
 
@@ -36,6 +33,7 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       alignItems: 'center',
       minHeight: '100%',
       gap: 5,
+      paddingBottom: 10,
     },
     header: {
       width: windowWidth - 60,
@@ -81,21 +79,6 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       justifyContent: 'center',
       alignItems: 'center',
       bottom: 0,
-      marginBottom: -20,
-    },
-    backButton: {
-      width: 60,
-      height: 60,
-      backgroundColor: 'white',
-      left: '-31%',
-      marginTop: -60,
-      top: '-41%',
-      zIndex: 10,
-      borderRadius: 20,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      transform: [{scale: 0.5}],
     },
   });
   return (
@@ -106,15 +89,9 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
             props={{
               image_url:
                 'https://cdn.shopify.com/s/files/1/0226/8187/8608/products/14005011_0_1280x1280_bebc5ed4-835b-45a9-b660-e18c59ce10c6.jpg?v=1605512532',
+              navigation: navigation,
             }}
           />
-          <Pressable
-            onPress={() => {
-              navigation.goBack();
-            }}
-            style={styled.backButton}>
-            <LeftArrow />
-          </Pressable>
           <Text style={styled.header}>{props.name}</Text>
           <View>
             {readMore ? (

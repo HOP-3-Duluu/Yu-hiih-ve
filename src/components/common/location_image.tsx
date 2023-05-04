@@ -5,8 +5,10 @@ import {
   Dimensions,
   View,
   TouchableOpacity,
+  Pressable,
 } from 'react-native';
 import {Image} from 'react-native';
+import {LeftArrow} from '../../assets/icon/left_arrow';
 import RedHeart_icon from '../../assets/icon/red_heart';
 
 const windowWidth = Dimensions.get('window').width;
@@ -39,6 +41,20 @@ export const LocationImage = ({props}: any) => {
       right: 20,
       bottom: -15,
     },
+    backButton: {
+      position: 'absolute',
+      width: 60,
+      height: 60,
+      backgroundColor: 'white',
+      marginTop: 10,
+      marginLeft: 10,
+      zIndex: 10,
+      borderRadius: 20,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      transform: [{scale: 0.5}],
+    },
   });
 
   const [favourite, setFavourite] = useState(false);
@@ -51,6 +67,13 @@ export const LocationImage = ({props}: any) => {
   return (
     <SafeAreaView>
       <View style={styled.image_dark} />
+      <Pressable
+        onPress={() => {
+          props.navigation.goBack();
+        }}
+        style={styled.backButton}>
+        <LeftArrow />
+      </Pressable>
       <Image
         source={{
           uri: `${props.image_url}`,
