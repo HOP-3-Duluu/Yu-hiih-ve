@@ -3,13 +3,14 @@ import {
   SafeAreaView,
   StyleSheet,
   Dimensions,
-  View,
   TouchableOpacity,
   Pressable,
+  Text,
 } from 'react-native';
 import {Image} from 'react-native';
 import {LeftArrow} from '../../assets/icon/left_arrow';
 import RedHeart_icon from '../../assets/icon/red_heart';
+import ImageView from 'react-native-image-viewing';
 
 const windowWidth = Dimensions.get('window').width;
 export const LocationImage = ({props}: any) => {
@@ -55,6 +56,15 @@ export const LocationImage = ({props}: any) => {
       alignItems: 'center',
       transform: [{scale: 0.5}],
     },
+    seeMore: {
+      width: windowWidth - 80,
+      marginTop: 320,
+      color: 'white',
+      fontSize: 14.5,
+      fontWeight: '500',
+      display: 'flex',
+      textAlign: 'right',
+    },
   });
 
   const [favourite, setFavourite] = useState(false);
@@ -64,9 +74,18 @@ export const LocationImage = ({props}: any) => {
     // MAKE LATER WHEN BACKEND IS FINISHED !!!!!!!!!
   };
 
+  const [visible, setIsVisible] = useState(false);
+  console.log(props);
   return (
     <SafeAreaView>
-      <View style={styled.image_dark} />
+      <TouchableOpacity
+        style={styled.image_dark}
+        activeOpacity={0.9}
+        onPress={() => {
+          setIsVisible(true);
+        }}>
+        <Text style={styled.seeMore}>See more photos.</Text>
+      </TouchableOpacity>
       <Pressable
         onPress={() => {
           props.navigation.goBack();
@@ -74,11 +93,12 @@ export const LocationImage = ({props}: any) => {
         style={styled.backButton}>
         <LeftArrow />
       </Pressable>
-      <Image
-        source={{
-          uri: `${props.image_url}`,
-        }}
-        style={styled.image}
+      <Image source={props.images[0]} style={styled.image} />
+      <ImageView
+        images={props.images}
+        imageIndex={0}
+        visible={visible}
+        onRequestClose={() => setIsVisible(false)}
       />
       <TouchableOpacity
         style={styled.like}
