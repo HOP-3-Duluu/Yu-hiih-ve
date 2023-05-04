@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabNavigation} from './RootNavigator';
 import { CategoriesPage } from '../pages/categories';
 import { LocationPage } from '../pages/location';
+import { SoftedCategoriesPage } from '../pages/softedCategories';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,11 @@ export const StackNavigator = () => {
         <Stack.Screen
           name="detail"
           component={LocationPage}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="softedCategories"
+          component={SoftedCategoriesPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -49,7 +49,7 @@ export const CategoriesPage = ({navigation}: any) => {
       
       <FlatList
         data={types}
-        renderItem={({item}) => <SmallCategory category_type={item} />}
+        renderItem={({item}) => <SmallCategory category_type={item} navigation={navigation}/>}
         horizontal={false}
         numColumns={2}
       />

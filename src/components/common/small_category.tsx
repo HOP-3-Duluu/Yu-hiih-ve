@@ -2,12 +2,13 @@ import {useState} from 'react';
 import {StyleSheet, Text, Image, Pressable} from 'react-native';
 
 
-export const SmallCategory = ({category_type}: any) => {
+export const SmallCategory = ({category_type, navigation}: any) => {
   
   return (
     <Pressable
-      // onPress={() => {
-      // }}
+      onPress={() => {
+        navigation.navigate('softedCategories')
+      }}
       style={styled.body}>
       <Image style={styled.image} source={category_type.url} />
       <Text style={styled.text}>{category_type.name}</Text>
