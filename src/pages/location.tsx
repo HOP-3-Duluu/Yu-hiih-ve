@@ -34,7 +34,8 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
     body: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'space-between',
+      minHeight: '100%',
+      gap: 5,
     },
     header: {
       width: windowWidth - 60,
@@ -49,7 +50,7 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       fontWeight: '300',
       paddingRight: 50,
       lineHeight: 15,
-      height: readMore ? 600 : Math.round(windowHeight / 15 / 15) * 15,
+      maxHeight: readMore ? 600 : Math.round(windowHeight / 15 / 15) * 15,
     },
     dots: {
       position: 'absolute',
@@ -79,7 +80,6 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      position: windowHeight > 700 ? 'absolute' : 'relative',
       bottom: 0,
       marginBottom: -20,
     },
@@ -89,7 +89,7 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
       backgroundColor: 'white',
       left: '-31%',
       marginTop: -60,
-      top: windowHeight > 700 ? '-43%' : '-38%',
+      top: '-41%',
       zIndex: 10,
       borderRadius: 20,
       display: 'flex',
@@ -101,7 +101,7 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
   return (
     <SafeAreaView style={{height: '100%'}}>
       <ScrollView>
-        <View style={windowHeight < 700 ? [styled.body] : [styled.body, {height: windowHeight - 120}]}>
+        <View style={styled.body}>
           <LocationImage
             props={{
               image_url:
@@ -140,11 +140,11 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
             </Text>
           </TouchableOpacity>
           <Information props={[]} />
-          {windowHeight > 700 ? <View style={{height: 70}} /> : ''}
           <Pressable
             style={styled.mapButton}
             onPress={() => {
-              navigation.navigate('Home'); // <----------- ADD NAVIGATION HERE!!1!1
+              navigation.navigate('Home'); // <----------- ADD NAVIGATION HERE!!1!1, IT WILL GO WHEREVER THE MAP LOCATION IS!
+              // navigation.navigate(props.location); // <------ IT CAN BE LIKE THIS, BUT CAN CHANGE LATER!
             }}>
             <Text style={{fontWeight: '600', fontSize: 18, color: 'white'}}>
               Go to map →
