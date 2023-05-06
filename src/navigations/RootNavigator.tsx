@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomePage } from '../pages/home';
-import { EventIcon, Home_icon, Heart_icon, Settings_icon, RedHeart_icon } from '../assets/icon/';
+import { EventIcon, Home_icon, Heart_icon, Settings_icon } from '../assets/icon/';
 import { SettingsPage } from '../pages/settings';
 import { PopularPage } from '../pages/popular';
 import { Event_page } from '../pages/events';
@@ -35,6 +35,7 @@ export const BottomTabNavigation = ({ navigation }: any) => {
           alignSelf: 'center',
           marginLeft: 30,
           marginRight: 30,
+          marginTop: 10
         },
       })}>
       <Tab.Screen
