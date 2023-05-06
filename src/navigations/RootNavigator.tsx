@@ -1,15 +1,14 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {HomePage} from '../pages/home';
-import {Home_icon} from '../assets/icon/home_icon';
-import {SettingsPage} from '../pages/settings';
-import {Settings_icon} from '../assets/icon/settings_icon';
-import {PopularPage} from '../pages/popular';
-import {Heart_icon} from '../assets/icon/heart';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { HomePage } from '../pages/home';
+import { EventIcon, Home_icon, Heart_icon, Settings_icon } from '../assets/icon/';
+import { SettingsPage } from '../pages/settings';
+import { PopularPage } from '../pages/popular';
+import { Event_page } from '../pages/events';
 
 const Tab = createBottomTabNavigator();
 
-export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
+export const BottomTabNavigation = ({ navigation }: { navigation: any }) => {
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -33,7 +32,7 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIconStyle: {marginTop: 10, width: 50, borderRadius: 50},
+          tabBarIconStyle: { marginTop: 10, width: 50, borderRadius: 50 },
           tabBarIcon: () => <Home_icon />,
         }}
       />
@@ -43,8 +42,18 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIconStyle: {marginTop: 10, width: 50, borderRadius: 50},
+          tabBarIconStyle: { marginTop: 10, width: 50, borderRadius: 50 },
           tabBarIcon: () => <Heart_icon />,
+        }}
+      />
+      <Tab.Screen
+        name="Event"
+        component={Event_page}
+        options={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarIconStyle: { marginTop: 10, width: 50, borderRadius: 50 },
+          tabBarIcon: () => <EventIcon />,
         }}
       />
       <Tab.Screen
@@ -53,10 +62,11 @@ export const BottomTabNavigation = ({navigation}: {navigation: any}) => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIconStyle: {marginTop: 10, width: 50, borderRadius: 50},
+          tabBarIconStyle: { marginTop: 10, width: 50, borderRadius: 50 },
           tabBarIcon: () => <Settings_icon />,
         }}
       />
+
     </Tab.Navigator>
   );
 };

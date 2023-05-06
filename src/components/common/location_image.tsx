@@ -8,8 +8,7 @@ import {
   Text,
 } from 'react-native';
 import {Image} from 'react-native';
-import {LeftArrow} from '../../assets/icon/left_arrow';
-import RedHeart_icon from '../../assets/icon/red_heart';
+import {LeftArrow, RedHeart_icon} from '../../assets/icon';
 import ImageView from 'react-native-image-viewing';
 
 const windowWidth = Dimensions.get('window').width;

@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, FlatList, Pressable, StyleSheet, SafeAreaView, Dimensions } from "react-native";
-import { LeftArrow } from "../assets/icon/left_arrow";
+import { LeftArrow } from "../assets/icon";
 
 export const SoftedCategoriesPage = (props: any) => {
 

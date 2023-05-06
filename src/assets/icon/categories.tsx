@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Rect } from "react-native-svg"
 
-export const Categories_icon = (props) => {
+export const Categories_icon = ({props}: any) => {
   return (
     <Svg
       width={107}

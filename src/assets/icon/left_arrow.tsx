@@ -1,7 +1,7 @@
 import * as React from "react"
 import Svg, { Path } from "react-native-svg"
 
-export const LeftArrow = (props) => {
+export const LeftArrow = ({props}: any) => {
   return (
     <Svg
       width={15}
