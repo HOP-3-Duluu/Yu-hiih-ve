@@ -6,7 +6,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-export const Categories = ({navigation}: any) => {
+export const Categories = ({ navigation }: any) => {
   const mock_data = [
     {
       image_url: require('../../assets/image/nature.png'),
@@ -34,6 +34,7 @@ export const Categories = ({navigation}: any) => {
     },
   ];
 
+
   return (
     <View style={styled.body}>
       <View style={styled.container1}>
@@ -46,28 +47,35 @@ export const Categories = ({navigation}: any) => {
           }}>
           Category
         </Text>
-       <Pressable onPress={() => {
-        navigation.navigate('categories')
-       }}>
-       <Text
-          style={{
-            fontWeight: '400',
-            color: '#242424',
-            opacity: 0.5,
-            fontSize: 12,
-          }}>
-          See more categories
-        </Text>
-       </Pressable>
+        <Pressable onPress={() => {
+          navigation.navigate('categories')
+        }}>
+          <Text
+            style={{
+              fontWeight: '400',
+              color: '#242424',
+              opacity: 0.5,
+              fontSize: 12,
+            }}>
+            See more categories
+          </Text>
+        </Pressable>
       </View>
       <FlatList
         data={mock_data}
         horizontal={true}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <View style={styled.container}>
-            <Pressable style={styled.button}>
-              <Image style={{width: 40, height: 40}} source={item.image_url} />
-              <Text style={{fontSize: 18, fontWeight: '400', marginLeft: 15}}>
+            <Pressable
+              style={styled.button}
+              onPress={() => {
+                const name = item.name
+                const url = item.image_url
+                navigation.navigate('softedCategories', {name, url})
+              }}
+            >
+              <Image style={{ width: 40, height: 40 }} source={item.image_url} />
+              <Text style={{ fontSize: 18, fontWeight: '400', marginLeft: 15 }}>
                 {item.name}
               </Text>
             </Pressable>

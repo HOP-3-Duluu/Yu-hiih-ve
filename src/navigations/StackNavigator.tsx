@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {BottomTabNavigation} from './RootNavigator';
 import { CategoriesPage } from '../pages/categories';
 import { LocationPage } from '../pages/location';
+import { SoftedCategoriesPage } from '../pages/softedCategories';
 import { LoginScreen } from '../auth/user/login';
 import { SignUpScreen } from '../auth/user/signUp';
 
@@ -28,6 +29,9 @@ export const StackNavigator = () => {
           component={LocationPage}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="softedCategories"
+          component={SoftedCategoriesPage}
          <Stack.Screen
           name="userLogin"
           component={LoginScreen}
