@@ -5,6 +5,8 @@ import {BottomTabNavigation} from './RootNavigator';
 import { CategoriesPage } from '../pages/categories';
 import { LocationPage } from '../pages/location';
 import { SoftedCategoriesPage } from '../pages/softedCategories';
+import { LoginScreen } from '../auth/user/login';
+import { SignUpScreen } from '../auth/user/signUp';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +32,14 @@ export const StackNavigator = () => {
         <Stack.Screen
           name="softedCategories"
           component={SoftedCategoriesPage}
+         <Stack.Screen
+          name="userLogin"
+          component={LoginScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="userSignUp"
+          component={SignUpScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
