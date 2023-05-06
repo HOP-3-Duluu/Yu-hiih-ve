@@ -71,7 +71,6 @@ export const Categories = ({ navigation }: any) => {
               onPress={() => {
                 const name = item.name
                 const url = item.image_url
-                console.log(navigation.goBack())
                 navigation.navigate('softedCategories', {name, url})
               }}
             >

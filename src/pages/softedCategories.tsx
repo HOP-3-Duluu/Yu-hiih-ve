@@ -5,32 +5,36 @@ import { LeftArrow } from "../assets/icon/left_arrow";
 export const SoftedCategoriesPage = (props: any) => {
 
 
+
+    const navigation = props.navigation
+
     const data = [props.route.params]
-    
+
+
     return (
         <SafeAreaView>
             <View style={style.container}>
-                <View style={{width: '90%'}}>
+                <View style={{ width: '90%' }}>
                     <Pressable
                         style={style.leftArrow}
                         onPress={() => (
-                            props.navigation.goBack()
+                            navigation.pop()
                         )}
                     >
                         <LeftArrow />
-                        <Text style={{marginLeft: '25%', fontSize: 30, fontWeight: '600'}}>{props.route.params.name}</Text>
+                        <Text style={{ marginLeft: '25%', fontSize: 30, fontWeight: '600' }}>{props.route.params.name}</Text>
                     </Pressable>
                     <FlatList
                         data={data}
-                        style={{marginTop: 10, height: "93%"}}
+                        style={{ marginTop: 10, height: "93%" }}
                         renderItem={({ item }) => (
                             <Pressable
                                 style={style.body}
                                 onPress={() => (
-                                    props.navigation.navigate('detail')
+                                    navigation.navigate('detail')
                                 )}
                             >
-                                <Image source={item.logo} style={{ width: 25, height: 25 }} />
+                                <Image source={item.url} style={{ width: 25, height: 25 }} />
                                 <Text style={style.name}>
                                     {item.name}
                                 </Text>
