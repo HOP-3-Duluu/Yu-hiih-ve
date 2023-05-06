@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, {Path} from 'react-native-svg';
 
-function RedHeart_icon({favourite}) {
+export const RedHeart_icon = ({favourite}) => {
   if (favourite) {
     return (
       <Svg
@@ -32,5 +32,3 @@ function RedHeart_icon({favourite}) {
     );
   }
 }
-
-export default RedHeart_icon;

@@ -8,7 +8,7 @@ import {
   Text,
   FlatList,
 } from 'react-native';
-import {LeftArrow} from '../assets/icon/left_arrow';
+import {LeftArrow} from '../assets/icon';
 import {SmallCategory} from '../components/common/small_category';
 
 export const CategoriesPage = ({navigation}: any) => {
