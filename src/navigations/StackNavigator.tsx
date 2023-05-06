@@ -32,6 +32,8 @@ export const StackNavigator = () => {
         <Stack.Screen
           name="softedCategories"
           component={SoftedCategoriesPage}
+          options={{headerShown: false}}
+         />
          <Stack.Screen
           name="userLogin"
           component={LoginScreen}
