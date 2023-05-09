@@ -5,12 +5,11 @@ import { EventIcon, Home_icon, Heart_icon, Settings_icon } from '../assets/icon/
 import { SettingsPage } from '../pages/settings';
 import { PopularPage } from '../pages/popular';
 import { Event_page } from '../pages/events';
+import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNavigation = ({ navigation }: any) => {
-
-
   return (
     <Tab.Navigator
       screenOptions={() => ({
@@ -26,16 +25,16 @@ export const BottomTabNavigation = ({ navigation }: any) => {
           justifyContent: 'center',
           alignItems: 'center',
         },
-        tabBarActiveBackgroundColor: 'red',
+        tabBarActiveBackgroundColor: '#EB5757',
         tabBarItemStyle: {
           maxWidth: '10%%',
-          maxHeight: "60%", 
+          maxHeight: "60%",
           borderRadius: 50,
           justifyContent: 'center',
           alignSelf: 'center',
           marginLeft: 30,
           marginRight: 30,
-          marginTop: 10
+          marginTop: 10,
         },
       })}>
       <Tab.Screen
@@ -44,16 +43,20 @@ export const BottomTabNavigation = ({ navigation }: any) => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIcon: () => <Home_icon />,
+          tabBarIcon: ({ focused }) => <View>
+            <Home_icon active={focused} />
+          </View>
         }}
       />
       <Tab.Screen
-        name="popular"
+        name="Popular"
         component={PopularPage}
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIcon: () => <Heart_icon />,
+          tabBarIcon: ({ focused }) => <View>
+            <Heart_icon active={focused} />
+          </View>,
         }}
       />
       <Tab.Screen
@@ -62,16 +65,20 @@ export const BottomTabNavigation = ({ navigation }: any) => {
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIcon: () => <EventIcon />,
+          tabBarIcon: ({ focused }) => <View>
+            <EventIcon active={focused} />
+          </View>
         }}
       />
       <Tab.Screen
-        name="settings"
+        name="Settings"
         component={SettingsPage}
         options={{
           headerShown: false,
           tabBarShowLabel: false,
-          tabBarIcon: () => <Settings_icon />,
+          tabBarIcon: ({ focused }) => <View>
+            <Settings_icon active={focused} />
+          </View>
         }}
       />
 

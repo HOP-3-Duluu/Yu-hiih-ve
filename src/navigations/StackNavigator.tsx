@@ -1,7 +1,7 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {BottomTabNavigation} from './RootNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { BottomTabNavigation } from './RootNavigator';
 import { CategoriesPage } from '../pages/categories';
 import { LocationPage } from '../pages/location';
 import { SoftedCategoriesPage } from '../pages/softedCategories';
@@ -17,32 +17,32 @@ export const StackNavigator = () => {
         <Stack.Screen
           name="BottomBarNavigator"
           component={BottomTabNavigation}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="categories"
           component={CategoriesPage}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="detail"
           component={LocationPage}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="softedCategories"
           component={SoftedCategoriesPage}
-          options={{headerShown: false}}
-         />
-         <Stack.Screen
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
           name="userLogin"
           component={LoginScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="userSignUp"
           component={SignUpScreen}
-          options={{headerShown: false}}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
