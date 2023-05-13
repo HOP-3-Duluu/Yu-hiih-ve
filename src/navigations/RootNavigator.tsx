@@ -32,9 +32,9 @@ export const BottomTabNavigation = ({ navigation }: any) => {
           borderRadius: 50,
           justifyContent: 'center',
           alignSelf: 'center',
-          marginLeft: 30,
-          marginRight: 30,
-          marginTop: 10,
+          marginLeft: "7%",
+          marginRight: "8%",
+          marginTop: "5%",
         },
       })}>
       <Tab.Screen
