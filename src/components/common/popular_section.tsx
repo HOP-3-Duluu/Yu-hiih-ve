@@ -1,9 +1,10 @@
-import { View, FlatList, Text, SafeAreaView, Image, StyleSheet, Button, Touchable, TouchableOpacity, Pressable, ImageBackground } from "react-native"
+import { View, FlatList, Text, SafeAreaView, StyleSheet, Pressable, ImageBackground } from "react-native"
 import { useState } from "react";
 import { Fullheart, Heart_icon } from "../../assets/icon";
 
 
-export const Popular_section = () => {
+export const Popular_section = ({ navigation }: any) => {
+
   const data = [
     {
       id: 1,
@@ -32,27 +33,31 @@ export const Popular_section = () => {
 
 
     return (
-      <View style={styles.item} key={item.id} >
-        <View style={styles.zuragcontainer}>
-          <ImageBackground
-            source={item.image}
-            style={styles.zurag}
-          >
-            <View>
-              <Pressable
-                style={styles.button}
-                onPress={() => {
-                  setClicked(!clicked)
-                }}>
-                {
-                  clicked ? <Fullheart /> : <Heart_icon props={{ width: 20, height: 20 }} />
-                }
-              </Pressable>
-            </View>
-            <Text style={styles.name}>{item.name} </Text>
-          </ImageBackground>
+      <Pressable onPress={() => (
+        navigation.navigate('detail')
+      )}>
+        <View style={styles.item} key={item.id} >
+          <View style={styles.zuragcontainer}>
+            <ImageBackground
+              source={item.image}
+              style={styles.zurag}
+            >
+              <View>
+                <Pressable
+                  style={styles.button}
+                  onPress={() => {
+                    setClicked(!clicked)
+                  }}>
+                  {
+                    clicked ? <Fullheart /> : <Heart_icon props={{ width: 20, height: 20 }} />
+                  }
+                </Pressable>
+              </View>
+              <Text style={styles.name}>{item.name} </Text>
+            </ImageBackground>
+          </View>
         </View>
-      </View>
+      </Pressable>
     )
   }
 

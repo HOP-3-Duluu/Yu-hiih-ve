@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
-import {Dimensions, Pressable, StyleSheet, View} from 'react-native';
+import React, { useState } from 'react';
+import { Dimensions, Pressable, StyleSheet, View } from 'react-native';
 import MapView from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import {MapTargetIcon} from '../assets/icon/maptarget';
-import {Home_icon} from '../assets';
-import {HouseIcon} from '../assets/icon/house';
+import { MapTargetIcon } from '../assets/icon/maptarget';
+import { HouseIcon } from '../assets/icon/house';
+import { LeftArrow } from '../assets';
 
-export const MapPage = ({navigation}: any) => {
+export const MapPage = ({ navigation }: any) => {
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
   const [location, setLocation] = useState({
@@ -24,12 +24,12 @@ export const MapPage = ({navigation}: any) => {
       longitudeDelta: 0.0421,
     }),
       Geolocation.getCurrentPosition(info =>
-          setLocation({
-            latitude: 47.92119610117282,
-            longitude: 106.91841835791561,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }),
+        setLocation({
+          latitude: 47.92119610117282,
+          longitude: 106.91841835791561,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }),
 
         // --------------------   This code doesn't work on computers, only on phones.
         // --------------------   So We'll use a preset location at the demoday place for now
@@ -44,6 +44,13 @@ export const MapPage = ({navigation}: any) => {
 
   return (
     <View>
+      <Pressable
+        onPress={() => {
+          navigation.goBack();
+        }}
+        style={styles.backArrow}>
+        <LeftArrow />
+      </Pressable>
       <MapView
         style={styles.map}
         initialRegion={{
@@ -93,5 +100,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 999999,
     zIndex: 1000,
+  },
+  backArrow: {
+    position: 'absolute',
+    width: 50,
+    height: 50,
+    paddingRight: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    borderRadius: 999999,
+    zIndex: 1000,
+    top: 60,
+    left: 20,
   },
 });
