@@ -27,7 +27,7 @@ export const BottomTabNavigation = ({ navigation }: any) => {
         },
         tabBarActiveBackgroundColor: '#EB5757',
         tabBarItemStyle: {
-          maxWidth: '10%%',
+          maxWidth: '9%%',
           maxHeight: "60%",
           borderRadius: 50,
           justifyContent: 'center',
