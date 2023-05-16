@@ -6,6 +6,7 @@ import { Popular_section } from '../components/common/popular_section';
 import { SearchInput } from '../components/core/searchInput';
 
 export const HomePage = ({ navigation }: any) => {
+
   const windowHeight = Dimensions.get('window').height;
   const windowWidth = Dimensions.get('window').width;
 
