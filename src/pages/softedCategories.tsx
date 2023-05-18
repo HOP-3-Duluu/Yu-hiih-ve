@@ -15,15 +15,19 @@ export const SoftedCategoriesPage = (props: any) => {
         <SafeAreaView>
             <View style={style.container}>
                 <View style={{ width: '90%' }}>
-                    <Pressable
-                        style={style.leftArrow}
-                        onPress={() => (
-                            navigation.pop()
-                        )}
-                    >
-                        <LeftArrow />
-                        <Text style={{ marginLeft: '25%', fontSize: 30, fontWeight: '600' }}>{props.route.params.name}</Text>
-                    </Pressable>
+                    <View style={style.head}>
+                        <Pressable
+                            style={style.leftArrow}
+                            onPress={() => (
+                                navigation.pop()
+                            )}
+                        >
+                            <LeftArrow />
+                        </Pressable>
+                        <View style={{ width: '75%', alignItems: 'center', marginLeft: 20 }}>
+                            <Text style={{ fontSize: 30, fontWeight: '600' }}>{props.route.params.name}</Text>
+                        </View>
+                    </View>
                     <FlatList
                         data={data}
                         style={{ marginTop: 10, height: "93%" }}
@@ -70,6 +74,13 @@ const style = StyleSheet.create({
     },
     leftArrow: {
         left: 20,
+        width: 20,
+        height: 40,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    head: {
+        width: "100%",
         display: 'flex',
         flexDirection: 'row',
     }

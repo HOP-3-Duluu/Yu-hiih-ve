@@ -16,7 +16,7 @@ export const HomePage = ({ navigation }: any) => {
         <Header navigation={navigation} />
         <SearchInput />
         <Categories navigation={navigation} />
-        <Popular_section />
+        <Popular_section navigation={navigation}/>
       </ScrollView>
     </SafeAreaView>
   );

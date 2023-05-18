@@ -131,8 +131,7 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
           <Pressable
             style={styled.mapButton}
             onPress={() => {
-              navigation.navigate('Home'); // <----------- ADD NAVIGATION HERE!!1!1, IT WILL GO WHEREVER THE MAP LOCATION IS!
-              // navigation.navigate(props.location); // <------ IT CAN BE LIKE THIS, BUT CAN CHANGE LATER!
+              navigation.navigate('map');
             }}>
             <Text style={{fontWeight: '600', fontSize: 18, color: 'white'}}>
               Go to map →
