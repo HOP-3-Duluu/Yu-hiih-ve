@@ -75,7 +75,7 @@ export const PopularPage = ({ navigation }: any) => {
         </SafeAreaView>
     )
 }
-
+// hi
 const styles = StyleSheet.create({
     body: {
         alignItems: 'center'
