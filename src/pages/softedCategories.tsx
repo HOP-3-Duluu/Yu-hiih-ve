@@ -20,7 +20,6 @@ export const SoftedCategoriesPage = (props: any) => {
 
   useEffect(() => {
     AwsAPI.get('getPostOfLocations').then(res => {
-      //    console.log("api : ", res?.data?.data);
       setApiData(res?.data?.data.filter((item: any) => item.category === data[0].type));
     });
   }, [AwsAPI, props.route.params.type]);

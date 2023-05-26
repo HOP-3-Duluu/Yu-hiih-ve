@@ -11,7 +11,6 @@ export const HowManyPeople = () => {
     ];
 
     const [number, setNumber] = useState(6);
-    console.log(number)
     return (
         <View style={styled.body}>
             <Text style={styled.peopleTypeText}>How many people are going?</Text>

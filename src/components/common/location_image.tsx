@@ -68,13 +68,11 @@ export const LocationImage = ({props}: any) => {
 
   const [favourite, setFavourite] = useState(false);
   const Favourite = () => {
-    console.log('Favourited!');
     setFavourite(!favourite);
     // MAKE LATER WHEN BACKEND IS FINISHED !!!!!!!!!
   };
 
   const [visible, setIsVisible] = useState(false);
-  console.log(props);
   return (
     <SafeAreaView>
       <TouchableOpacity
