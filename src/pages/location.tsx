@@ -14,29 +14,30 @@ import {LocationImage} from '../components/common/location_image';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-export const LocationPage = ({navigation}: any, {props}: any) => {
-  props = {
-    // MOCK DATA!
-    // DELETE WHEN WE GET REAL DATA!
-    images: [
-      {
-        uri: 'https://cdn.shopify.com/s/files/1/1917/6033/products/tabasco_1024x1024.jpg?v=1613071500',
-      },
-      {
-        uri: 'https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg',
-      },
-      {
-        uri: 'https://www.chilipeppermadness.com/wp-content/uploads/2018/10/Jalapeno-Peppers1.jpg',
-      },
-      {
-        uri: 'https://static.onecms.io/wp-content/uploads/sites/19/2018/02/13/tabasco-peppers-bottle-hero-2000.jpg',
-      },
-    ],
-    name: 'Tobasco is good',
-    description:
-      'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
-    information: {}, // Something like this: {type: 'price',name: '1kino 10000T'}}
-  };
+export const LocationPage = ({navigation, props}: any) => {
+  // props = {
+  //   // MOCK DATA!
+  //   // DELETE WHEN WE GET REAL DATA!
+  //   images: [
+  //     {
+  //       uri: 'https://cdn.shopify.com/s/files/1/1917/6033/products/tabasco_1024x1024.jpg?v=1613071500',
+  //     },
+  //     {
+  //       uri: 'https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg',
+  //     },
+  //     {
+  //       uri: 'https://www.chilipeppermadness.com/wp-content/uploads/2018/10/Jalapeno-Peppers1.jpg',
+  //     },
+  //     {
+  //       uri: 'https://static.onecms.io/wp-content/uploads/sites/19/2018/02/13/tabasco-peppers-bottle-hero-2000.jpg',
+  //     },
+  //   ],
+  //   name: 'Tobasco is good',
+  //   description:
+  //     'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
+  //   information: {}, // Something like this: {type: 'price',name: '1kino 10000T'}}
+  // };
+  console.log(props)
   const [readMore, setReadMore] = useState(false);
 
   const styled = StyleSheet.create({
@@ -97,22 +98,22 @@ export const LocationPage = ({navigation}: any, {props}: any) => {
     <SafeAreaView style={{height: '100%'}}>
       <ScrollView>
         <View style={styled.body}>
-          <LocationImage
+          {/* <LocationImage
             props={{
-              images: props.images,
+              images: props?.images,
               navigation: navigation,
             }}
-          />
-          <Text style={styled.header}>{props.name}</Text>
+          /> */}
+          <Text style={styled.header}>{props?.name}</Text>
           <View>
             {readMore ? (
               <View style={styled.scroll}>
                 <ScrollView>
-                  <Text style={styled.text}>{props.description}</Text>
+                  <Text style={styled.text}>{props?.description}</Text>
                 </ScrollView>
               </View>
             ) : (
-              <Text style={styled.text}>{props.description}</Text>
+              <Text style={styled.text}>{props?.description}</Text>
             )}
 
             <Text style={styled.dots}>...</Text>

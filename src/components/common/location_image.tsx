@@ -92,9 +92,9 @@ export const LocationImage = ({props}: any) => {
         style={styled.backButton}>
         <LeftArrow />
       </Pressable>
-      <Image source={props.images[0]} style={styled.image} />
+      <Image source={props?.images[0]} style={styled.image} />
       <ImageView
-        images={props.images}
+        images={props?.images}
         imageIndex={0}
         visible={visible}
         onRequestClose={() => setIsVisible(false)}
