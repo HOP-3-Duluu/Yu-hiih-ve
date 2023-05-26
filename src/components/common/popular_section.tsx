@@ -33,13 +33,12 @@ export const Popular_section = ({ navigation }: any) => {
 
   useEffect(() => {
     AwsAPI.get('getPostOfLocations').then(res => {
-      setApiData(res?.data?.data)
+      setApiData(res?.data?.data.filter((item: any) => item.cnt >= 1))
     });
   }, [AwsAPI]);
 
   const OneZurag = ({ item }: any) => {
     const [clicked, setClicked] = useState(false)
-
 
     return (
       <Pressable
@@ -50,12 +49,13 @@ export const Popular_section = ({ navigation }: any) => {
           const cnt = item?.cnt
           const price = item?.price
           const socialAdd = item?.socialAddress
-          navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd })
+          const url = item?.url
+          navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd, url })
         }}>
         <View style={styles.item} key={item.id} >
           <View style={styles.zuragcontainer}>
             <ImageBackground
-              source={require('../../assets/image/prime.jpeg')}
+              source={{uri: item?.url}}
               style={styles.zurag}
             >
               <View>
@@ -82,7 +82,7 @@ export const Popular_section = ({ navigation }: any) => {
     <SafeAreaView style={styles.body}>
       <Text style={styles.title}>Popular</Text>
       <FlatList
-        data={apiData}
+        data={apiData.sort((a, b) => b?.cnt - a?.cnt)}
         renderItem={({ item }) => <OneZurag item={item} />}
         horizontal={true}
       />

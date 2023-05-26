@@ -20,7 +20,8 @@ export const PopularPage = ({ navigation }: any) => {
                     const cnt = item?.cnt
                     const price = item?.price
                     const socialAdd = item?.socialAddress
-                    navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd })
+                    const url = item?.url
+                    navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd, url })
                 }}>
                 <View style={styles.container}>
                     <View style={{ flexDirection: "column", gap: 5 }}>

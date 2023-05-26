@@ -21,10 +21,15 @@ export const LocationPage = (props: any) => {
 
   const images = [
     {
-      uri: 'https://cdn.pixabay.com/photo/2016/11/10/21/11/house-1815147_1280.png',
+      uri: props?.route?.params?.url,
     }
   ]
-
+  const images1 = [
+    {
+      uri: "https://cdn.pixabay.com/photo/2016/11/10/21/11/house-1815147_1280.png",
+    }
+  ]
+  
   const styled = StyleSheet.create({
     body: {
       display: 'flex',
@@ -66,7 +71,7 @@ export const LocationPage = (props: any) => {
         <View style={styled.body}>
           <LocationImage
             props={{
-              images: images,
+              images: props?.route?.params?.url === undefined ? images1 : images,
               navigation: navigation,
             }}
           />
