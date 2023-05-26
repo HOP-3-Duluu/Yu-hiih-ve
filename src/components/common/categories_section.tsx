@@ -1,39 +1,52 @@
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-} from 'react-native';
-export const Categories = ({ navigation }: any) => {
+import {Pressable, StyleSheet, Text, View, Image, FlatList} from 'react-native';
+export const Categories = ({navigation}: any) => {
   const mock_data = [
     {
       image_url: require('../../assets/image/nature.png'),
-      name: 'Nature',
-    },
-    {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'PC',
-    },
-    {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Restaurant',
-    },
-    {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Pool',
-    },
-    {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Billiard',
+      name: 'Internet Cafe',
+      type: "pc"
     },
     {
       image_url: require('../../assets/image/nature.png'),
       name: 'Movie Theater',
+      type: "movie"
+    },
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Restaurant',
+      type: "resturaunt"
+    },
+    
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Karoake',
+      type: "karoake"
+    },
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Pub',
+      type: "pub"
+    },
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Sport Hall',
+      type: "sport"
+    },
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Kids',
+      type: "kids"
+    },
+    {
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Sport',
+      type: "sport"
+    },{
+      image_url: require('../../assets/image/nature.png'),
+      name: 'Sport',
+      type: "sport hall"
     },
   ];
-
 
   return (
     <View style={styled.body}>
@@ -47,9 +60,10 @@ export const Categories = ({ navigation }: any) => {
           }}>
           Category
         </Text>
-        <Pressable onPress={() => {
-          navigation.navigate('categories')
-        }}>
+        <Pressable
+          onPress={() => {
+            navigation.navigate('categories');
+          }}>
           <Text
             style={{
               fontWeight: '400',
@@ -64,18 +78,18 @@ export const Categories = ({ navigation }: any) => {
       <FlatList
         data={mock_data}
         horizontal={true}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <View style={styled.container}>
             <Pressable
               style={styled.button}
               onPress={() => {
-                const name = item.name
-                const url = item.image_url
-                navigation.navigate('softedCategories', {name, url})
-              }}
-            >
-              <Image style={{ width: 40, height: 40 }} source={item.image_url} />
-              <Text style={{ fontSize: 18, fontWeight: '400', marginLeft: 15 }}>
+                const name = item.name;
+                const url = item.image_url;
+                const type = item.type;
+                navigation.navigate('softedCategories', {name, url, type});
+              }}>
+              <Image style={{width: 40, height: 40}} source={item.image_url} />
+              <Text style={{fontSize: 18, fontWeight: '400', marginLeft: 15}}>
                 {item.name}
               </Text>
             </Pressable>
@@ -99,7 +113,7 @@ const styled = StyleSheet.create({
     alignItems: 'center',
   },
   container1: {
-    width: "90%",
+    width: '90%',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

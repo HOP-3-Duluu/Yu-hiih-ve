@@ -10,7 +10,8 @@ export const SmallCategory = ({category_type, navigation}: any) => {
       onPress={() => {
         const name = category_type.name
         const url = category_type.url
-        navigation.navigate('softedCategories', {name, url})
+        const type = category_type.type
+        navigation.navigate('softedCategories', {name, url, type})
       }}
       style={styled.body}>
       <Image style={styled.image} source={category_type.url} />
