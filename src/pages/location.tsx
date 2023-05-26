@@ -21,17 +21,8 @@ export const LocationPage = (props: any) => {
 
   const images = [
     {
-      uri: 'https://cdn.shopify.com/s/files/1/1917/6033/products/tabasco_1024x1024.jpg?v=1613071500',
-    },
-    {
-      uri: 'https://images.freeimages.com/images/previews/ac9/railway-hdr-1361893.jpg',
-    },
-    {
-      uri: 'https://www.chilipeppermadness.com/wp-content/uploads/2018/10/Jalapeno-Peppers1.jpg',
-    },
-    {
-      uri: 'https://static.onecms.io/wp-content/uploads/sites/19/2018/02/13/tabasco-peppers-bottle-hero-2000.jpg',
-    },
+      uri: 'https://cdn.pixabay.com/photo/2016/11/10/21/11/house-1815147_1280.png',
+    }
   ]
 
   const styled = StyleSheet.create({
@@ -60,12 +51,13 @@ export const LocationPage = (props: any) => {
       width: windowWidth - 50,
       backgroundColor: '#FF678B',
       height: 70,
-      marginTop: 10,
+      marginTop: 30,
       borderRadius: 60,
       display: 'flex',
       justifyContent: 'center',
+      position: "absolute",
       alignItems: 'center',
-      bottom: 0,
+      bottom:20,
     },
   });
   return (
@@ -90,7 +82,12 @@ export const LocationPage = (props: any) => {
               {props?.route?.params?.description}
             </ReadMore>
           </View>
-          <Information props={[]} />
+          <Information props={props?.route?.params} />
+          <Text style={styled.text}>name: {props?.route?.params?.name}</Text>
+          <Text style={styled.text}>like: {props?.route?.params?.cnt}</Text>
+          <Text style={styled.text}>category: {props?.route?.params?.category}</Text>
+          <Text style={styled.text}>social address: {props?.route?.params?.socialAddress}</Text>
+          <Text style={styled.text}>phone number: {props?.route?.params?.phoneNumber}</Text>
           <Pressable
             style={styled.mapButton}
             onPress={() => {

@@ -2,48 +2,39 @@ import {Pressable, StyleSheet, Text, View, Image, FlatList} from 'react-native';
 export const Categories = ({navigation}: any) => {
   const mock_data = [
     {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/play_station.png'),
       name: 'Internet Cafe',
       type: "pc"
     },
     {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/cinema.png'),
       name: 'Movie Theater',
       type: "movie"
     },
     {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/ramenNoodles.png'),
       name: 'Restaurant',
       type: "resturaunt"
     },
     
     {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/karaoke.png'),
       name: 'Karoake',
       type: "karoake"
     },
     {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/pub.png'),
       name: 'Pub',
       type: "pub"
     },
     {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Sport Hall',
-      type: "sport"
-    },
-    {
-      image_url: require('../../assets/image/nature.png'),
+      image_url: require('../../assets/image/game.png'),
       name: 'Kids',
       type: "kids"
     },
-    {
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Sport',
-      type: "sport"
-    },{
-      image_url: require('../../assets/image/nature.png'),
-      name: 'Sport',
+   {
+      image_url: require('../../assets/image/basketball.png'),
+      name: 'Sport Center',
       type: "sport hall"
     },
   ];

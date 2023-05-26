@@ -16,8 +16,8 @@ import LogoutIcon from '../assets/icon/logout';
 export const SettingsPage = ({props}: any) => {
   // TEMPORARY DATA!  USE REAL PROPS WHEN BACKEND IS SETUP!
   props = {
-    name: 'User Name',
-    profile_url: 'https://m.media-amazon.com/images/I/51uWcq45wmS.jpg',
+    name: 'User: TestUser',
+    profile_url: 'https://cdn.pixabay.com/photo/2016/11/10/21/11/house-1815147_1280.png',
   };
   // TEMPORARY DATA!  USE REAL PROPS WHEN BACKEND IS SETUP!
 

@@ -1,61 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SafeAreaView, View, Text, StyleSheet, Image, FlatList, Pressable } from "react-native";
 import ReadMore from '@fawazahmed/react-native-read-more';
 import { Fullheart, Heart_icon } from "../assets";
 import { useState } from "react";
+import AwsAPI from "../library";
 
 export const PopularPage = ({ navigation }: any) => {
-
-    const data = [
-        {
-            id: 1,
-            image: require('../assets/image/basketball.png'),
-            name: 'Tengis Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-        {
-            id: 2,
-            image: require('../assets/image/basketball.png'),
-            name: 'Prime Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-        {
-            id: 3,
-            image: require('../assets/image/basketball.png'),
-            name: 'Imax Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-        {
-            id: 4,
-            image: require('../assets/image/basketball.png'),
-            name: 'Urguu Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-        {
-            id: 5,
-            image: require('../assets/image/basketball.png'),
-            name: 'Urguu Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-        {
-            id: 6,
-            image: require('../assets/image/basketball.png'),
-            name: 'Urguu Cinema',
-            about: 'Lorem ipsum dolor sit amet awadaad, consectetur adipisicing elit. Labore quos a consequatur sed quod accusantium, vero fugiat iure voluptates laboriosam repudiandae fuga ut rem excepturi quasi quia nihil est vitae.'
-        },
-    ]
+    const [apiData, setApiData] = useState([]);
 
 
     const Places = ({ item }: any) => {
-        const [clicked, setClicked] = useState(false)
-        
-
+        const [clicked, setClicked] = useState(true)
         return (
-            <Pressable onPress={() => (
-                navigation.navigate('detail')
-            )}>
-                <View style={styles.container} key={item.id}>
-                    <Image source={item.image} style={styles.image} />
+            <Pressable
+                onPress={() => {
+                    const name = item?.name
+                    const description = item?.description
+                    const phoneNumber = item?.phoneNumber
+                    const cnt = item?.cnt
+                    const price = item?.price
+                    const socialAdd = item?.socialAddress
+                    navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd })
+                }}>
+                <View style={styles.container}>
+                    <View style={{ flexDirection: "column", gap: 5 }}>
+                        {item?.category === "pc" && <Image source={require("../assets/image/play_station.png")} style={styles.image} />}
+                        {item?.category === "movie" && <Image source={require("../assets/image/cinema.png")} style={styles.image} />}{item?.category === "resturaunt" && <Image source={require("../assets/image/ramenNoodles.png")} style={styles.image} />}
+                        {item?.category === "pub" && <Image source={require("../assets/image/pub.png")} style={styles.image} />}
+                        {item?.category === "karoake" && <Image source={require("../assets/image/karaoke.png")} style={styles.image} />}
+                        <Text style={styles.texts}>like: {item?.cnt}</Text>
+                    </View>
                     <View style={styles.texts}>
                         <View style={styles.topic}>
                             <Text style={styles.name}>{item.name}</Text>
@@ -75,7 +49,7 @@ export const PopularPage = ({ navigation }: any) => {
                             seeLessStyle={{ color: 'grey' }}
                             seeMoreStyle={{ color: 'grey' }}
                         >
-                            {item.about}
+                            {item?.description}
                         </ReadMore>
                     </View>
                 </View>
@@ -83,12 +57,18 @@ export const PopularPage = ({ navigation }: any) => {
         )
     }
 
+    useEffect(() => {
+        AwsAPI.get('getPostOfLocations').then(res => {
+            setApiData(res?.data?.data.filter((item: any) => item.cnt >= 1))
+        });
+    }, [AwsAPI]);
 
     return (
         <SafeAreaView style={styles.body}>
             <FlatList
-                data={data}
+                data={apiData.sort((a, b) => b?.cnt - a?.cnt)}
                 style={{ width: "90%", height: "100%" }}
+
                 renderItem={({ item }) => <Places item={item} />}
             />
         </SafeAreaView>
