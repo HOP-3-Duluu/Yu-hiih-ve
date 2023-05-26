@@ -7,28 +7,19 @@ import {
 } from 'react-native';
 import { CarIcon, CardIcon, FoodIcon, ShieldIcon } from '../../assets/icon';
 export const Information = ({props}: any) => {
-      // MOCK DATA!
-    // DELETE WHEN WE GET REAL DATA!
-   props = [
+
+   const propss = [
     {
-      type: 'price',
-      name: '1kino 10000T',
+      type: 'like',
+      name: props?.cnt,
     },
     {
       type: 'distance',
       name: '2km',
     },
     {
-      type: 'food',
-      name: 'Restaurant',
-    },
-    {
-      type: 'safety',
-      name: 'Insurance ',
-    },
-    {
       type: 'price',
-      name: 'Cool',
+      name: props?.price,
     },
   ];
 
@@ -40,7 +31,7 @@ export const Information = ({props}: any) => {
   return (
     <View style={styled.body}>
       <FlatList
-        data={props}
+        data={propss}
         horizontal={true}
         renderItem={({item}) => (
           <View style={styled.container}>

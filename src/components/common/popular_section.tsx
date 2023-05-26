@@ -1,6 +1,7 @@
 import { View, FlatList, Text, SafeAreaView, StyleSheet, Pressable, ImageBackground } from "react-native"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Fullheart, Heart_icon } from "../../assets/icon";
+import AwsAPI from "../../library";
 
 
 export const Popular_section = ({ navigation }: any) => {
@@ -28,18 +29,33 @@ export const Popular_section = ({ navigation }: any) => {
     }
   ];
 
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    AwsAPI.get('getPostOfLocations').then(res => {
+      setApiData(res?.data?.data)
+    });
+  }, [AwsAPI]);
+
   const OneZurag = ({ item }: any) => {
     const [clicked, setClicked] = useState(false)
 
 
     return (
-      <Pressable onPress={() => (
-        navigation.navigate('detail')
-      )}>
+      <Pressable
+        onPress={() => {
+          const name = item?.name
+          const description = item?.description
+          const phoneNumber = item?.phoneNumber
+          const cnt = item?.cnt
+          const price = item?.price
+          const socialAdd = item?.socialAddress
+          navigation.navigate('detail', { name, description, phoneNumber, cnt, price, socialAdd })
+        }}>
         <View style={styles.item} key={item.id} >
           <View style={styles.zuragcontainer}>
             <ImageBackground
-              source={item.image}
+              source={require('../../assets/image/prime.jpeg')}
               style={styles.zurag}
             >
               <View>
@@ -66,7 +82,7 @@ export const Popular_section = ({ navigation }: any) => {
     <SafeAreaView style={styles.body}>
       <Text style={styles.title}>Popular</Text>
       <FlatList
-        data={data}
+        data={apiData}
         renderItem={({ item }) => <OneZurag item={item} />}
         horizontal={true}
       />
