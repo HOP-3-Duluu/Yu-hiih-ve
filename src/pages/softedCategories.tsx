@@ -20,6 +20,7 @@ export const SoftedCategoriesPage = (props: any) => {
   console.log(data);
 
 
+  console.log("type:", props.type)
   useEffect(() => {
     AwsAPI.get('getPostOfLocations').then(res => {
       setApiData(res?.data?.data.filter((item: any) => item.category === data[0].type));
@@ -47,12 +48,15 @@ export const SoftedCategoriesPage = (props: any) => {
               <Pressable
                 style={style.body}
                 onPress={() => {
-                    const name = item?.name
-                    const description = item?.description
-                    const phoneNumber = item?.phoneNumber
-                    navigation.navigate('detail', {name, description, phoneNumber})
+                  const name = item?.name
+                  const description = item?.description
+                  const phoneNumber = item?.phoneNumber
+                  const cnt = item?.cnt
+                  const price = item?.price
+                  const socialAdd = item?.socialAddress
+                    navigation.navigate('detail', {name, description, phoneNumber, cnt, price, socialAdd})
                     }}>
-                <Image source={item.url} style={{width: 25, height: 25}} />
+                <Image source={require("../assets/image/cafe.png")} style={{width: 25, height: 25}} />
                 <Text style={style.name}>{item?.name}</Text>
               </Pressable>
             )}
