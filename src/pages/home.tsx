@@ -14,7 +14,7 @@ export const HomePage = ({ navigation }: any) => {
   return (
     <TouchableWithoutFeedback style={{ flex: 1 }} onPress={Keyboard.dismiss} accessible={true}>
       <SafeAreaView style={{ alignItems: 'flex-end', width: windowWidth }}>
-        <ScrollView style={{ height: windowHeight + 3890, width: "94%" }}>
+        <ScrollView style={{ height: windowHeight + 380, width: "94%" }}>
           <Header navigation={navigation} />
           <SearchInput navigation={navigation} focus={focus} setfocus={setfocus} />
           <SafeAreaView style={focus ? { display: 'none', height: "0%" } : { display: 'flex' }}>
