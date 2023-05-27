@@ -1,31 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 
-export const LoginScreen = ({navigation}: any) => {
+export const LoginScreen = (props: any) => {
+  const navigation = props.navigation
+  const email = props.route.params.email
+  const password = props.route.params.password
+  const loged = props.route.params.loged
+  const setLoged = props.route.params.setLoged
+
+  const [email1, setEmail] = useState('')
+  const [password1, setPassword] = useState('')
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.heading}>login</Text>
+        <Text style={styles.heading}>Login</Text>
       </View>
       <View style={styles.card}>
-        <TextInput style={styles.input} placeholder="Email" />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email1}
+          onChangeText={(e) => setEmail(e)}
+        />
         <TextInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
+          value={password1}
+          onChangeText={(e) => setPassword(e)}
         />
         <TouchableOpacity style={styles.forgotPasswordButton}>
           <Text style={styles.forgotPasswordButtonText}>Forgot?</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log('log');
+            if(email === email1 && password == password1){
+              navigation.navigate('Settings', {email})
+              Alert.alert("Login succes");
+              setLoged(true)
+            } else {
+              Alert.alert("Email or password wrong!");
+            }
           }}
           style={styles.button}>
           <Text style={styles.buttonText}>Login</Text>

@@ -1,5 +1,5 @@
-import {borderRadius, height, padding} from '@mui/system';
-import React, {useState} from 'react';
+import { borderRadius, height, padding } from '@mui/system';
+import React, { useState } from 'react';
 import {
   Dimensions,
   Image,
@@ -13,7 +13,13 @@ import {
 } from 'react-native';
 import LogoutIcon from '../assets/icon/logout';
 
-export const SettingsPage = ({props}: any) => {
+export const SettingsPage = ( props: any) => {
+
+  const [loged, setLoged] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const email1 = props?.route?.params?.email
+  const navigation = props.navigation
   // TEMPORARY DATA!  USE REAL PROPS WHEN BACKEND IS SETUP!
   props = {
     name: 'User: TestUser',
@@ -25,8 +31,10 @@ export const SettingsPage = ({props}: any) => {
 
   const Logout = () => {
     // PUT LOGOUT FUNCTION HERE WHEN BACKEND IS SETUP!
-    console.log("logout");
+    setLoged(false)
+    setModalVisible(false);
   };
+
 
   return (
     <SafeAreaView>
@@ -49,17 +57,19 @@ export const SettingsPage = ({props}: any) => {
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
-                <Pressable style={styled.logoutmodalbtn1}>
-                  <Text onPress={Logout} style={{fontSize: 18, color: 'red'}}>
-                    Yes
-                  </Text>
+                <Pressable
+                  onPress={e => {
+                    Logout()
+                  }}
+                  style={styled.logoutmodalbtn1}>
+                  <Text style={{ fontSize: 18, color: 'red' }}>Yes</Text>
                 </Pressable>
                 <Pressable
                   onPress={e => {
                     setModalVisible(false);
                   }}
                   style={styled.logoutmodalbtn2}>
-                  <Text style={{fontSize: 18, color: 'white'}}>No</Text>
+                  <Text style={{ fontSize: 18, color: 'white' }}>No</Text>
                 </Pressable>
               </View>
             </View>
@@ -74,23 +84,40 @@ export const SettingsPage = ({props}: any) => {
               }}
             />
             <View style={styled.container2}>
-              <Text style={styled.name}>{props.name}</Text>
+              <Text style={styled.name}>{loged ? email1 : 'No user'}</Text>
             </View>
           </View>
           <View style={styled.line} />
-
-          <Pressable
-            style={styled.logout}
-            onPress={e => {
-              setModalVisible(true);
-            }}>
-            <LogoutIcon />
-            <Text style={styled.logouttext}>Log Out</Text>
-          </Pressable>
-
+          <View style={{ flexDirection: 'row', gap: 10 }}>
+            {
+              loged ? <Pressable
+                style={styled.logout}
+                onPress={e => {
+                  setModalVisible(true)
+                }}>
+                <LogoutIcon />
+                <Text style={styled.logouttext}>Log Out</Text>
+              </Pressable> : <Pressable
+                style={styled.logout}
+                onPress={e => {
+                  navigation.navigate('userSignUp', { setLoged, email, password, setEmail, setPassword })
+                }}>
+                <LogoutIcon />
+                <Text style={styled.logouttext}>Sign Up</Text>
+              </Pressable>
+            }
+            <Pressable
+              style={styled.logout}
+              onPress={e => {
+                navigation.navigate('userLogin', { setLoged })
+              }}>
+              <LogoutIcon />
+              <Text style={styled.logouttext}>Log In</Text>
+            </Pressable>
+          </View>
           <Text style={styled.about}>
             App Developers: {'\n'}
-            {'\n'}@tuguldur125, {'\n'}N.Khuslen, {'\n'}Bekkung, {'\n'}Obasht,{' '}
+            {'\n'}Tuguldur{'\n'}Khuslen{'\n'}Bilguun{'\n'}Oyunbaatar{' '}
             {'\n'}Tsogt
           </Text>
         </View>
@@ -146,8 +173,8 @@ const styled = StyleSheet.create({
     marginTop: 20,
   },
   logout: {
-    width: '80%',
-    height: 70,
+    width: '35%',
+    height: 60,
     borderWidth: 2,
     borderColor: 'red',
     borderRadius: 23,
@@ -156,11 +183,11 @@ const styled = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     paddingRight: 30,
-    paddingLeft: 30,
+    paddingLeft: 10,
     marginTop: 10,
   },
   logouttext: {
-    fontSize: 26,
+    fontSize: 20,
     color: 'red',
   },
   logoutmodalcontainer: {

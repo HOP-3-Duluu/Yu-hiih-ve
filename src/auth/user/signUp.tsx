@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,22 +7,37 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-export const SignUpScreen = ({navigation}: any) => {
+export const SignUpScreen = (props: any) => {
+
+  const navigation = props.navigation
+  const loged = props.route.params.loged
+  const setLoged = props.route.params.setLoged
+  const [email, setEmail] = useState(props.route.params.email)
+  const [password, setPassword] = useState(props.route.params.setPassword)
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.heading}>sign up</Text>
+        <Text style={styles.heading}>Sign up</Text>
       </View>
       <View style={styles.card}>
-        <TextInput style={styles.input} placeholder="Email" />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={email}
+          onChangeText={(e) => setEmail(e)}
+        />
         <TextInput
           style={styles.input}
           placeholder="Password"
           secureTextEntry={true}
+          value={password}
+          onChangeText={(e) => setPassword(e)}
         />
         <TouchableOpacity
           onPress={() => {
-            console.log('log');
+            navigation.navigate('userLogin', {email, password, setLoged})
           }}
           style={styles.button}>
           <Text style={styles.buttonText}>SignUp</Text>
