@@ -17,17 +17,19 @@ export const SoftedCategoriesPage = (props: any) => {
   const [apiData, setApiData] = useState([]);
 
   const data = [props.route.params];
+  console.log(data);
+
 
   useEffect(() => {
     AwsAPI.get('getPostOfLocations').then(res => {
       setApiData(res?.data?.data.filter((item: any) => item.category === data[0].type));
     });
-  }, [AwsAPI, props.route.params.type]);
+  }, [AwsAPI]);
 
   return (
     <SafeAreaView>
       <View style={style.container}>
-        <View style={{width: '90%'}}>
+        {data.length != 0 ?<View style={{width: '90%'}}>
           <View style={style.head}>
             <Pressable style={style.leftArrow} onPress={() => navigation.pop()}>
               <LeftArrow />
@@ -55,7 +57,8 @@ export const SoftedCategoriesPage = (props: any) => {
               </Pressable>
             )}
           />
-        </View>
+        </View> : <View><Text>Fetching...</Text></View>}
+    
       </View>
     </SafeAreaView>
   );
