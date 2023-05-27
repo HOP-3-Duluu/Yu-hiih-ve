@@ -1,21 +1,100 @@
 import React, { useEffect, useState } from 'react';
-import { Pressable, SafeAreaView, StyleSheet, TextInput, View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { Pressable, SafeAreaView, StyleSheet, TextInput, View, Text, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { SearchIcon } from '../../assets/icon';
 
 const data = [
-    { name: 'Restaurant' }, { name: 'Movie Theater' }, { name: 'Game Center' },
+    {
+        name: 'Internet Cafe',
+        type: "pc"
+    },
+    {
+        name: 'Movie Theater',
+        type: "movie"
+    },
+    {
+        name: 'Restaurant',
+        type: "resturaunt"
+    },
+
+    {
+        name: 'Karoake',
+        type: "karoake"
+    },
+    {
+        name: 'Pub',
+        type: "pub"
+    },
+    {
+        name: 'Sport Hall',
+        type: "sport"
+    },
+    {
+        name: 'Kids',
+        type: "kids"
+    },
+    {
+        name: 'Sport',
+        type: "sport"
+    },
+    {
+        name: 'Sport',
+        type: "sport hall"
+    },
+    {
+        name: 'Kids',
+        type: "kids"
+    },
+    {
+        name: 'Sport',
+        type: "sport"
+    },
+    {
+        name: 'Sport',
+        type: "sport hall"
+    },
+    {
+        name: 'Kids',
+        type: "kids"
+    },
+    {
+        name: 'Sport',
+        type: "sport"
+    },
+    {
+        name: 'Sport',
+        type: "sport hall"
+    },
+    {
+        name: 'Kids',
+        type: "kids"
+    },
+    {
+        name: 'Sport',
+        type: "sport"
+    },
+    {
+        name: 'Sport',
+        type: "sport hall"
+    },
+    {
+        name: 'Kids',
+        type: "kids"
+    },
+    {
+        name: 'Sport',
+        type: "sport"
+    },
+    {
+        name: 'Sport',
+        type: "sport hall"
+    },
 ]
 
-export const SearchInput = ({ navigation }: any) => {
-
-    const [focus, setfocus] = useState(false)
+export const SearchInput = ({ navigation, focus, setfocus }: any) => {
     const [search, setSearch] = useState('');
-    const [name, setName] = useState('');
+    const [type, setType] = useState('');
     const [filteredDataSource, setFilteredDataSource] = useState(data);
 
-    useEffect(() => {
-       console.log(name);
-    }, [name]);
 
     const searchFilterFunction = (text: any) => {
         if (text) {
@@ -36,25 +115,23 @@ export const SearchInput = ({ navigation }: any) => {
     };
 
     const Katogory = () => {
-        return <View style={styles.search}>
-            <FlatList
-                style={styles.search}
-                data={filteredDataSource}
-                scrollEnabled={false}
-                renderItem={({ item }) => {
-                    return <View>
+        return <FlatList
+            data={filteredDataSource}
+            scrollEnabled={false}
+            renderItem={({ item }) => {
+                return <View>
+                    <TouchableOpacity onPress={() => {
+                        setSearch(item.name);
+                        setType(item.type)
+                        navigation.navigate('softedCategories', { type: item.type, name: item.name })
+                    }}>
+                        <Text style={{ marginTop: 15, fontSize: 20 }}>{item.name}</Text>
                         <Text style={{ opacity: 0.2 }}>____________________________________________</Text>
-                        <TouchableOpacity onPress={() => {
-                            setSearch(item.name);
-                            navigation.navigate('softedCategories', {type: 'resturaunt',  name: name})
-                        }}>
-                            <Text style={{ marginTop: 15, fontSize: 20 }}>{item.name}</Text>
-                        </TouchableOpacity>
-                    </View>
-                }
-                }
-            />
-        </View >
+                    </TouchableOpacity>
+                </View>
+            }
+            }
+        />
     }
 
     return (
@@ -78,16 +155,14 @@ export const SearchInput = ({ navigation }: any) => {
                     <Pressable
                         style={styles.button}
                         onPress={() => {
-                            navigation.navigate('softedCategories', {type: 'resturaunt',  name: name})
+                            navigation.navigate('softedCategories', { type: type, name: search })
                         }}>
                         <SearchIcon />
                     </Pressable>
                 </View>
-            </View>
-            <View>
-                {
-                    focus ? <View><Katogory /></View> : null
-                }
+                <ScrollView style={focus ? styles.search : { display: 'none' }}>
+                    {focus ? <Katogory /> : null}
+                </ScrollView>
             </View>
         </SafeAreaView>
     )
@@ -95,7 +170,6 @@ export const SearchInput = ({ navigation }: any) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#f8f8f8',
         width: "92%",
         display: "flex",
         borderRadius: 15,
@@ -111,12 +185,13 @@ const styles = StyleSheet.create({
         borderColor: 'grey',
         borderWidth: 0.3,
         borderRadius: 15,
+        backgroundColor: '#f8f8f8',
     },
     input: {
         width: 290,
         paddingTop: 15,
         paddingBottom: 15,
-        paddingLeft: 15
+        paddingLeft: 15,
     },
     button: {
         width: 50,
@@ -124,9 +199,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     search: {
-        marginLeftL: '2%',
-        paddingLeft: '3%',
-        width: '95%',
-        height: "100%",
+        maxHeight: "76%",
+        display: 'flex',
+        paddingLeft: '3%'
     }
 });
