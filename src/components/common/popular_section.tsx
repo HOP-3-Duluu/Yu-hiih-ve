@@ -1,10 +1,20 @@
 import { View, FlatList, Text, SafeAreaView, StyleSheet, Pressable, ImageBackground } from "react-native"
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Fullheart, Heart_icon } from "../../assets/icon";
 import AwsAPI from "../../library";
 
 
-export const Popular_section = ({ navigation }: any) => {
+export const Popular_section = (props: any) => {
+  const navigation = props.navigation;
+  const [apiData, setApiData] = useState([]);
+
+
+
+  // useEffect(() => {
+  //   AwsAPI.get('getPostOfLocations').then(res => {
+  //     setApiData(res?.data?.data.filter((item: any) => item.category === data[0].type));
+  //   });
+  // }, [AwsAPI, data]);
 
   const data = [
     {

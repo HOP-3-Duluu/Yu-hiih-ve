@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   Dimensions,
 } from 'react-native';
-import {LeftArrow} from '../assets/icon';
+import { LeftArrow } from '../assets/icon';
 import AwsAPI from '../library';
 
 export const SoftedCategoriesPage = (props: any) => {
@@ -18,31 +18,35 @@ export const SoftedCategoriesPage = (props: any) => {
 
   const data = [props.route.params];
 
+
   console.log("type:", props.type)
   useEffect(() => {
     AwsAPI.get('getPostOfLocations').then(res => {
       setApiData(res?.data?.data.filter((item: any) => item.category === data[0].type));
     });
-  }, [AwsAPI, props.route.params.type]);
+  }, [AwsAPI]);
 
   return (
     <SafeAreaView>
       <View style={style.container}>
-        <View style={{width: '90%'}}>
+        {data.length != 0 ? <View style={{ width: '90%' }}>
           <View style={style.head}>
-            <Pressable style={style.leftArrow} onPress={() => navigation.pop()}>
+            <Pressable style={style.leftArrow} onPress={() => {
+              navigation.pop()
+              setApiData([])
+            }}>
               <LeftArrow />
             </Pressable>
-            <View style={{width: '75%', alignItems: 'center', marginLeft: 20}}>
-              <Text style={{fontSize: 30, fontWeight: '600'}}>
+            <View style={{ width: '75%', alignItems: 'center', marginLeft: 20 }}>
+              <Text style={{ fontSize: 30, fontWeight: '600' }}>
                 {props.route.params.name}
               </Text>
             </View>
           </View>
           <FlatList
             data={apiData}
-            style={{marginTop: 10, height: '93%'}}
-            renderItem={({item}: any) => (
+            style={{ marginTop: 10, height: '93%' }}
+            renderItem={({ item }: any) => (
               <Pressable
                 style={style.body}
                 onPress={() => {
@@ -59,7 +63,8 @@ export const SoftedCategoriesPage = (props: any) => {
               </Pressable>
             )}
           />
-        </View>
+        </View> : <View><Text>Fetching...</Text></View>}
+
       </View>
     </SafeAreaView>
   );
